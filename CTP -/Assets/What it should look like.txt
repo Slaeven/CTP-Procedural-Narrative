@@ -1,0 +1,30 @@
+(define (problem goblinking)
+   (:domain magic-world)
+   (:objects
+      npc - character
+      king blacksmith wizard miner lumberjack - person
+      goblin - minor
+      gobking - major
+      town forest road city blacksmithy pond mountain tundra abandonedhouse  - location
+      quest sword magic enchantedsword wood water bucket ore pickaxe - element
+   )
+   (:init
+      (border abandonedhouse forest)
+      (border abandonedhouse mountain)
+      (border pond road)
+      (border pond city)
+      (border forest tundra)
+      (border forest abandonedhouse)
+      (border town mountain)
+      (border road blacksmithy)
+      (border road pond)
+      (border blacksmithy road)
+      (border tundra city)
+      (border tundra forest)
+      (border mountain abandonedhouse)
+      (border mountain town)
+      (border city pond)
+      (border city tundra)
+   )
+   (:goal(and (has-complete npc)))
+)

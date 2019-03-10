@@ -890,7 +890,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 0.1}
-  m_Children: []
+  m_Children:
+  - {fileID: 404208234}
   m_Father: {fileID: 375377247}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3813,7 +3814,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 0.1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1387932881}
   m_Father: {fileID: 517540083}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3934,6 +3936,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ff775ad6de0408246a14b407044826f6,
     type: 3}
   m_PrefabInternal: {fileID: 395758582}
+--- !u!1 &404208233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 404208234}
+  m_Layer: 0
+  m_Name: Name
+  m_TagString: forest
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &404208234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404208233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 88244746}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &404535304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 440648, guid: 4436f5b141ae4074082424c09570acb3,
@@ -7465,7 +7495,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 0.1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1562256447}
   m_Father: {fileID: 1383727027}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12816,6 +12847,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd4687a585d1884aa2777c0944ffb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1387932880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1387932881}
+  m_Layer: 0
+  m_Name: Name
+  m_TagString: town
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1387932881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1387932880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 390801760}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1399750107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4035158495216074, guid: 00020124f820e9c49967a11170956dc1,
@@ -13715,13 +13774,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1480377163}
-  m_LocalRotation: {x: -0.06187579, y: 0.9018755, z: 0.13788283, w: 0.4046978}
-  m_LocalPosition: {x: -12.182, y: 1.126, z: 11.121}
+  m_LocalRotation: {x: 0.08934957, y: 0.86609405, z: -0.2819428, w: 0.4029964}
+  m_LocalPosition: {x: -21.32, y: 15.1, z: 14.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -17.385, y: 131.666, z: 0}
+  m_LocalEulerAnglesHint: {x: 34.083, y: 128.55501, z: -5.0200005}
 --- !u!1001 &1482183048
 Prefab:
   m_ObjectHideFlags: 0
@@ -14367,6 +14426,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78af3a7aad589fa49b8fb946c9e57362, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1562256446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1562256447}
+  m_Layer: 0
+  m_Name: Name
+  m_TagString: road
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1562256447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1562256446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 766197335}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1562746389
 Prefab:
   m_ObjectHideFlags: 0
@@ -17472,20 +17559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b5e957ead8dd24fae434771b9b8e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locations:
-  - towntest2
-  - road
-  - forest
-  - city
-  - tundra
-  - blacksmithy
-  - pond
-  - abandonedhouse
-  - mountain
   nodes: []
-  nearbyNodes: []
   investNodesArray: []
   currentCenter: {fileID: 0}
+  run1: 0
+  run2: 0
 --- !u!4 &1908095141
 Transform:
   m_ObjectHideFlags: 0

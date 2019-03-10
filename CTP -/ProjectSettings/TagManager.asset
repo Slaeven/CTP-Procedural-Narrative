@@ -7,6 +7,15 @@ TagManager:
   - Location
   - Node
   - CurrentNode
+  - town
+  - road
+  - forest
+  - city
+  - tundra
+  - blacksmithy
+  - pond
+  - abandonedhouse
+  - mountain
   layers:
   - Default
   - TransparentFX
