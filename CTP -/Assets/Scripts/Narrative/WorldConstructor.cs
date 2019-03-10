@@ -15,7 +15,6 @@ public class WorldConstructor : MonoBehaviour
     {
         locations = GameObject.FindGameObjectsWithTag("Location"); // Randomises and adds to an array
 
-
         for (int positionOfArray = 0; positionOfArray < locations.Length; positionOfArray++)
         {
             GameObject obj = locations[positionOfArray];
@@ -27,7 +26,6 @@ public class WorldConstructor : MonoBehaviour
         foreach(GameObject location in locations)
         {
             choice = Random.Range(-1, 2);
-            //Debug.Log(choice);
 
             if (choice == -1 && previousMove == 1)
             {
@@ -64,9 +62,5 @@ public class WorldConstructor : MonoBehaviour
         }
 
 	}
-	
-	void Update ()
-    {
-		
-	}
+
 }

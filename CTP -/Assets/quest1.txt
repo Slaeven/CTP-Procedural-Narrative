@@ -1,15 +1,15 @@
 (define (problem goblinking)
    (:domain magic-world)
    (:objects
-      npc - character1
-      king blacksmith wizard - person
+      npc - character
+      king blacksmith wizard miner lumberjack - person
       goblin - minor
       gobking - major
-      town forest road city blacksmithy hills mountain goblincave - location
-      quest sword magic enchantedsword - element
+      town forest road city blacksmithy pond mountain tundra abandonedhouse  - location
+      quest sword magic enchantedsword wood water bucket ore pickaxe - element
    )
    (:init
-      (border town forest)
+      (border towntest2 forest)
       (border town road)
       (border town hills)
       (border road town)
