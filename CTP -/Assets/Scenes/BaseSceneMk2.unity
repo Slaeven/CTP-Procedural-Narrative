@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38412997, g: 0.38839197, b: 0.6524379, a: 1}
+  m_IndirectSpecularColor: {r: 0.3842103, g: 0.38847336, b: 0.65242445, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3587,7 +3587,7 @@ Transform:
   - {fileID: 1753852993}
   - {fileID: 106171871}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &375377248
 MonoBehaviour:
@@ -4946,7 +4946,7 @@ Transform:
   - {fileID: 1288154617}
   - {fileID: 1866960635}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &517540084
 MonoBehaviour:
@@ -6417,7 +6417,7 @@ Transform:
   - {fileID: 1826600854}
   - {fileID: 40766495}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &639720768
 MonoBehaviour:
@@ -9360,7 +9360,7 @@ Transform:
   - {fileID: 1734069779}
   - {fileID: 257268649}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &985368503
 MonoBehaviour:
@@ -11901,7 +11901,7 @@ Transform:
   - {fileID: 356140980}
   - {fileID: 1175872333}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1313044774
 MonoBehaviour:
@@ -12834,7 +12834,7 @@ Transform:
   - {fileID: 1719610151}
   - {fileID: 335771609}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1383727028
 MonoBehaviour:
@@ -15965,7 +15965,7 @@ Transform:
   - {fileID: 1213100377}
   - {fileID: 918306806}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1765128946
 MonoBehaviour:
@@ -17216,7 +17216,7 @@ Transform:
   - {fileID: 611125534}
   - {fileID: 1824047318}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1868853523
 MonoBehaviour:
@@ -17387,7 +17387,7 @@ Transform:
   - {fileID: 1989708185}
   - {fileID: 621543680}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1876767065
 MonoBehaviour:
@@ -17559,11 +17559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b5e957ead8dd24fae434771b9b8e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterType: 0
   nodes: []
   investNodesArray: []
   currentCenter: {fileID: 0}
-  run1: 0
-  run2: 0
 --- !u!4 &1908095141
 Transform:
   m_ObjectHideFlags: 0
@@ -17575,7 +17574,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908095142
 MonoBehaviour:

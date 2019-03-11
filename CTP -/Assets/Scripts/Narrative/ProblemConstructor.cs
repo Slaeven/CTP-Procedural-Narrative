@@ -5,16 +5,56 @@ using UnityEngine;
 
 public class ProblemConstructor : MonoBehaviour
 {
-    private int curTextNum = 0;
+    enum QuestType
+    {
+        Gatherer, // 0
+        Messenger,// 1
+        Guard,    // 2
+        Hero      // 3
+    };
+    enum CollectablesGatherer
+    {
+        wood,
+        ore,
+        water,
+        fish
+    };
+    enum GuardPost
+    {
+        town,
+        city,
+        blacksmithy,
+        road
+    };
+    enum MessageBox
+    {
+        town,
+        city,
+        abandonedhouse,
+        blacksmithy
+    }
+    enum HeroDestination
+    {
+        tundra,
+        mountain,
+        forest
+    }
 
-    //public string[] locations = new string[] {"town", "road", "forest", "city", "tundra",
-    //    "blacksmithy", "pond", "abandonedhouse", "mountain" };
+    QuestType questType;
+    CollectablesGatherer collectable;
+    GuardPost post;
+    MessageBox postBox;
+    HeroDestination heroDest;
+
+    public int characterType;
+
+    private int curTextNum = 0;
 
     public GameObject[] nodes; // nodes in the center of each tile
     public GameObject[] investNodesArray; // current nodes being investigated for distance
     public GameObject currentCenter;
-    public bool run1 = false;
-    public bool run2 = false;
+    private bool run1 = false;
+    private bool run2 = false;
 
     private float timer = 0;
 
@@ -22,6 +62,7 @@ public class ProblemConstructor : MonoBehaviour
     {
         string path1 = Application.dataPath + "/quest1.pddl";
         nodes = GameObject.FindGameObjectsWithTag("Node");
+        GenerateProblem();
         File.WriteAllText(path1, "");
     }
 
@@ -35,7 +76,6 @@ public class ProblemConstructor : MonoBehaviour
                 CreateMainText();
                 GenerateWorld();
                 FinishText();
-
             }
         }
         else
@@ -43,6 +83,40 @@ public class ProblemConstructor : MonoBehaviour
             timer += Time.deltaTime;
         }
 
+    }
+
+    void GenerateProblem()
+    {
+        string path1 = Application.dataPath + "/quest1.pddl";
+        questType = (QuestType)(Random.Range(0, 4));
+
+        switch (questType)
+        {
+            case QuestType.Gatherer:
+                {
+                    collectable = (CollectablesGatherer)(Random.Range(0, 4));
+                    File.AppendAllText(path1, "  (:goal(and (has-" + collectable + " npc)))\n");
+                    break;
+                }
+            case QuestType.Messenger:
+                {
+                    postBox = (MessageBox)(Random.Range(0, 4));
+                    File.AppendAllText(path1, "  (:goal(and (at " + postBox + " npc)))\n");
+                    break;
+                }
+            case QuestType.Guard:
+                {
+                    post = (GuardPost)(Random.Range(0, 4));
+                    File.AppendAllText(path1, "  (:goal(and (at " + post + " npc)))\n");
+                    break;
+                }
+            case QuestType.Hero:
+                {
+                    heroDest = (HeroDestination)(Random.Range(0, 4));
+                    File.AppendAllText(path1, "  (:goal(and (at " + heroDest + " npc)))\n");
+                    break;
+                }
+        }
     }
 
     void GenerateWorld()
@@ -66,14 +140,6 @@ public class ProblemConstructor : MonoBehaviour
     void AddBorder(string currentNodeName, string neighbourParentName)
     {
         string path1 = Application.dataPath + "/quest1.pddl";
-        string path2 = Application.dataPath + "/quest2.pddl";
-        string path3 = Application.dataPath + "/quest3.pddl";
-        string path4 = Application.dataPath + "/quest4.pddl";
-        string path5 = Application.dataPath + "/quest5.pddl";
-        string path6 = Application.dataPath + "/quest6.pddl";
-        string path7 = Application.dataPath + "/quest7.pddl";
-        string path8 = Application.dataPath + "/quest8.pddl";
-        string path9 = Application.dataPath + "/quest9.pddl";
 
         File.AppendAllText(path1, "      (border " + currentNodeName + " " + neighbourParentName + ")\n");
     }
@@ -82,14 +148,6 @@ public class ProblemConstructor : MonoBehaviour
     void CreateMainText()
     {
         string path1 = Application.dataPath + "/quest1.pddl";
-        string path2 = Application.dataPath + "/quest2.pddl";
-        string path3 = Application.dataPath + "/quest3.pddl";
-        string path4 = Application.dataPath + "/quest4.pddl";
-        string path5 = Application.dataPath + "/quest5.pddl";
-        string path6 = Application.dataPath + "/quest6.pddl";
-        string path7 = Application.dataPath + "/quest7.pddl";
-        string path8 = Application.dataPath + "/quest8.pddl";
-        string path9 = Application.dataPath + "/quest9.pddl";
 
 
             File.WriteAllText(path1, "(define (problem goblinking)\n");
@@ -108,14 +166,6 @@ public class ProblemConstructor : MonoBehaviour
     void FinishText()
     {
         string path1 = Application.dataPath + "/quest1.pddl";
-        string path2 = Application.dataPath + "/quest2.pddl";
-        string path3 = Application.dataPath + "/quest3.pddl";
-        string path4 = Application.dataPath + "/quest4.pddl";
-        string path5 = Application.dataPath + "/quest5.pddl";
-        string path6 = Application.dataPath + "/quest6.pddl";
-        string path7 = Application.dataPath + "/quest7.pddl";
-        string path8 = Application.dataPath + "/quest8.pddl";
-        string path9 = Application.dataPath + "/quest9.pddl";
 
         File.AppendAllText(path1, "      (at king city)\n");
         File.AppendAllText(path1, "      (at blacksmith blacksmithy)\n");
@@ -123,8 +173,9 @@ public class ProblemConstructor : MonoBehaviour
         File.AppendAllText(path1, "      (at lumberjack town)\n");
         File.AppendAllText(path1, "      (at shopkeep town)\n");
         File.AppendAllText(path1, "      (at fisher pond)\n");
+
         File.AppendAllText(path1, "   )\n");
-        File.AppendAllText(path1, "  (:goal(and (has-complete npc)))\n");
+        GenerateProblem(); // Generate a problem for a NPC to fulfill
         File.AppendAllText(path1, ")");
 
     }
