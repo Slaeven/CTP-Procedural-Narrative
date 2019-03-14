@@ -50,9 +50,10 @@ public class ProblemConstructor : MonoBehaviour
 
     private int curTextNum = 0;
 
-    public GameObject[] nodes; // nodes in the center of each tile
-    public GameObject[] investNodesArray; // current nodes being investigated for distance
-    public GameObject currentCenter;
+    private GameObject[] nodes; // nodes in the center of each tile
+    private GameObject[] investNodesArray; // current nodes being investigated for distance
+    private GameObject currentCenter;
+
     private bool run1 = false;
     private bool run2 = false;
 
@@ -143,7 +144,6 @@ public class ProblemConstructor : MonoBehaviour
 
         File.AppendAllText(path1, "      (border " + currentNodeName + " " + neighbourParentName + ")\n");
     }
-
 
     void CreateMainText()
     {
