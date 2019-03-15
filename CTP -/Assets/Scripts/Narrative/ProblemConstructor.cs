@@ -23,7 +23,7 @@ public class ProblemConstructor : MonoBehaviour
     {
         town,
         city,
-        blacksmithy,
+        mine,
         road
     };
     enum MessageBox
@@ -31,7 +31,7 @@ public class ProblemConstructor : MonoBehaviour
         town,
         city,
         abandonedhouse,
-        blacksmithy
+        mine
     }
     enum HeroDestination
     {
@@ -54,7 +54,6 @@ public class ProblemConstructor : MonoBehaviour
     private GameObject[] investNodesArray; // current nodes being investigated for distance
     private GameObject currentCenter;
 
-    private bool run1 = false;
     private bool run2 = false;
 
     private float timer = 0;
@@ -157,7 +156,7 @@ public class ProblemConstructor : MonoBehaviour
             File.AppendAllText(path1, "      king blacksmith shopkeep miner lumberjack fisher - person\n"); // Adjustable for other non AI NPCs
             File.AppendAllText(path1, "      goblin - minor\n"); //Adjustable enemies
             File.AppendAllText(path1, "      gobking - major\n"); // Adjustable Bosses
-            File.AppendAllText(path1, "      town forest road city blacksmithy pond mountain tundra abandonedhouse  - location\n"); // 9 Locations
+            File.AppendAllText(path1, "      town forest road city mine pond mountain tundra abandonedhouse  - location\n"); // 9 Locations
             File.AppendAllText(path1, "      quest sword magic enchantedsword wood water bucket ore pickaxe - object\n");
             File.AppendAllText(path1, "   )\n");
             File.AppendAllText(path1, "   (:init\n");
@@ -168,8 +167,8 @@ public class ProblemConstructor : MonoBehaviour
         string path1 = Application.dataPath + "/quest1.pddl";
 
         File.AppendAllText(path1, "      (at king city)\n");
-        File.AppendAllText(path1, "      (at blacksmith blacksmithy)\n");
-        File.AppendAllText(path1, "      (at miner blacksmithy)\n");
+        File.AppendAllText(path1, "      (at blacksmith mine)\n");
+        File.AppendAllText(path1, "      (at miner mine)\n");
         File.AppendAllText(path1, "      (at lumberjack town)\n");
         File.AppendAllText(path1, "      (at shopkeep town)\n");
         File.AppendAllText(path1, "      (at fisher pond)\n");
