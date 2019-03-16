@@ -16,6 +16,8 @@ TagManager:
   - pond
   - abandonedhouse
   - mountain
+  - GoTo
+  - Link
   layers:
   - Default
   - TransparentFX

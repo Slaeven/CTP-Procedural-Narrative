@@ -9,10 +9,13 @@ public class AINavigation : MonoBehaviour
     private NavMeshAgent npc;
     public Vector3 AILocToMove = new Vector3(0,0,0);
     public GameObject AInpc;
+    public GameObject moveTo;
+
 
     void Awake()
     {
         npc = GetComponent<NavMeshAgent>();
+        moveTo = GameObject.FindGameObjectWithTag("GoTo");
     }
 
 	void Start ()
@@ -28,6 +31,7 @@ public class AINavigation : MonoBehaviour
 
 	void Update ()
     {
-        MoveToLocation(AILocToMove);
+
+        MoveToLocation(moveTo.transform.position);
 	}
 }
