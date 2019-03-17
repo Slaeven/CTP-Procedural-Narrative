@@ -39,12 +39,25 @@ public class ProblemConstructor : MonoBehaviour
         mountain,
         forest
     }
+    enum AllLocations
+    {
+        town,
+        road,
+        forest,
+        city,
+        tundra,
+        mine,
+        pond,
+        abandonedhouse,
+        mountain
+    };
 
     QuestType questType;
     CollectablesGatherer collectable;
     GuardPost post;
     MessageBox postBox;
     HeroDestination heroDest;
+    AllLocations allLocations;
 
     public int characterType;
 
@@ -89,6 +102,7 @@ public class ProblemConstructor : MonoBehaviour
     {
         string path1 = Application.dataPath + "/quest1.pddl";
         questType = (QuestType)(Random.Range(0, 4));
+        allLocations = (AllLocations)(Random.Range(0, 8));
 
         switch (questType)
         {
@@ -101,19 +115,19 @@ public class ProblemConstructor : MonoBehaviour
             case QuestType.Messenger:
                 {
                     postBox = (MessageBox)(Random.Range(0, 4));
-                    File.AppendAllText(path1, "  (:goal(and (at " + postBox + " npc)))\n");
+                    File.AppendAllText(path1, "  (:goal(and (at npc " + postBox + ")))\n");
                     break;
                 }
             case QuestType.Guard:
                 {
                     post = (GuardPost)(Random.Range(0, 4));
-                    File.AppendAllText(path1, "  (:goal(and (at " + post + " npc)))\n");
+                    File.AppendAllText(path1, "  (:goal(and (at npc " + post + ")))\n");
                     break;
                 }
             case QuestType.Hero:
                 {
                     heroDest = (HeroDestination)(Random.Range(0, 4));
-                    File.AppendAllText(path1, "  (:goal(and (at " + heroDest + " npc)))\n");
+                    File.AppendAllText(path1, "  (:goal(and (at npc " + heroDest + ")))\n");
                     break;
                 }
         }
@@ -149,10 +163,10 @@ public class ProblemConstructor : MonoBehaviour
         string path1 = Application.dataPath + "/quest1.pddl";
 
 
-            File.WriteAllText(path1, "(define (problem goblinking)\n");
+            File.WriteAllText(path1, "(define (problem mk4)\n");
             File.AppendAllText(path1, "   (:domain magic-world)\n");
             File.AppendAllText(path1, "   (:objects\n");
-            File.AppendAllText(path1, "      npc - player\n");
+            File.AppendAllText(path1, "      npc - character\n");
             File.AppendAllText(path1, "      king blacksmith shopkeep miner lumberjack fisher - person\n"); // Adjustable for other non AI NPCs
             File.AppendAllText(path1, "      goblin - minor\n"); //Adjustable enemies
             File.AppendAllText(path1, "      gobking - major\n"); // Adjustable Bosses
@@ -172,6 +186,7 @@ public class ProblemConstructor : MonoBehaviour
         File.AppendAllText(path1, "      (at lumberjack town)\n");
         File.AppendAllText(path1, "      (at shopkeep town)\n");
         File.AppendAllText(path1, "      (at fisher pond)\n");
+        File.AppendAllText(path1, "      (at npc " + allLocations + ")\n");
 
         File.AppendAllText(path1, "   )\n");
         GenerateProblem(); // Generate a problem for a NPC to fulfill

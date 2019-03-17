@@ -33,7 +33,7 @@ public class WorldManager : MonoBehaviour
             foreach (NavMeshSurface mesh in navMeshs)
             {
                 mesh.BuildNavMesh();
-                Debug.Log("baked");
+                //Debug.Log("baked");
             }
         }
         if (timer >= 2 && locationsFound == false)
