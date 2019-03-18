@@ -110,24 +110,28 @@ public class ProblemConstructor : MonoBehaviour
                 {
                     collectable = (CollectablesGatherer)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (has-" + collectable + " npc)))\n");
+                    Debug.Log(collectable);
                     break;
                 }
             case QuestType.Messenger:
                 {
                     postBox = (MessageBox)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (at npc " + postBox + ")))\n");
+                    Debug.Log(postBox);
                     break;
                 }
             case QuestType.Guard:
                 {
                     post = (GuardPost)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (at npc " + post + ")))\n");
+                    Debug.Log(post);
                     break;
                 }
             case QuestType.Hero:
                 {
                     heroDest = (HeroDestination)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (at npc " + heroDest + ")))\n");
+                    Debug.Log(heroDest);
                     break;
                 }
         }
@@ -163,29 +167,48 @@ public class ProblemConstructor : MonoBehaviour
         string path1 = Application.dataPath + "/quest1.pddl";
 
 
-            File.WriteAllText(path1, "(define (problem mk4)\n");
-            File.AppendAllText(path1, "   (:domain magic-world)\n");
-            File.AppendAllText(path1, "   (:objects\n");
-            File.AppendAllText(path1, "      npc - character\n");
-            File.AppendAllText(path1, "      king blacksmith shopkeep miner lumberjack fisher - person\n"); // Adjustable for other non AI NPCs
-            File.AppendAllText(path1, "      goblin - minor\n"); //Adjustable enemies
-            File.AppendAllText(path1, "      gobking - major\n"); // Adjustable Bosses
-            File.AppendAllText(path1, "      town forest road city mine pond mountain tundra abandonedhouse  - location\n"); // 9 Locations
-            File.AppendAllText(path1, "      quest sword magic enchantedsword wood water bucket ore pickaxe - object\n");
-            File.AppendAllText(path1, "   )\n");
-            File.AppendAllText(path1, "   (:init\n");
+        File.WriteAllText(path1, "(define (problem mk5)\n");
+        File.AppendAllText(path1, "   (:domain magic-world)\n");
+        File.AppendAllText(path1, "   (:objects\n");
+        File.AppendAllText(path1, "      npc - character\n");
+        File.AppendAllText(path1, "      kingperson - king\n"); // Adjustable for other non AI NPCs
+        File.AppendAllText(path1, "      blacksmithperson - blacksmith\n");
+        File.AppendAllText(path1, "      shopkeepperson - shopkeep\n");
+        File.AppendAllText(path1, "      minerperson - miner\n");
+        File.AppendAllText(path1, "      lumberjackperson - lumberjack\n");
+        File.AppendAllText(path1, "      fisherperson - fisher\n");
+        File.AppendAllText(path1, "      goblin - minor\n"); //Adjustable enemies
+        File.AppendAllText(path1, "      gobking - major\n"); // Adjustable Bosses
+        File.AppendAllText(path1, "      questobject - quest\n");
+        File.AppendAllText(path1, "      swordobject - sword\n");
+        File.AppendAllText(path1, "      woodobject - wood\n");
+        File.AppendAllText(path1, "      waterobject - water\n");
+        File.AppendAllText(path1, "      bucketobject - bucket\n");
+        File.AppendAllText(path1, "      oreobject - ore\n");
+        File.AppendAllText(path1, "      pickaxeobject - pickaxe\n");
+        File.AppendAllText(path1, "      fishobject - fish\n");
+        File.AppendAllText(path1, "      town forest road city mine pond mountain tundra abandonedhouse  - location\n"); // 9 Locations
+        File.AppendAllText(path1, "   )\n");
+        File.AppendAllText(path1, "   (:init\n");
     }
 
     void FinishText()
     {
         string path1 = Application.dataPath + "/quest1.pddl";
 
-        File.AppendAllText(path1, "      (at king city)\n");
-        File.AppendAllText(path1, "      (at blacksmith mine)\n");
-        File.AppendAllText(path1, "      (at miner mine)\n");
-        File.AppendAllText(path1, "      (at lumberjack town)\n");
-        File.AppendAllText(path1, "      (at shopkeep town)\n");
-        File.AppendAllText(path1, "      (at fisher pond)\n");
+        File.AppendAllText(path1, "      (at kingperson city)\n");
+        File.AppendAllText(path1, "      (at blacksmithperson mine)\n");
+        File.AppendAllText(path1, "      (at minerperson mine)\n");
+        File.AppendAllText(path1, "      (at lumberjackperson town)\n");
+        File.AppendAllText(path1, "      (at shopkeepperson town)\n");
+        File.AppendAllText(path1, "      (at fisherperson pond)\n");
+        File.AppendAllText(path1, "      (at fishobject pond)\n");
+        File.AppendAllText(path1, "      (at woodobject forest)\n");
+        File.AppendAllText(path1, "      (at oreobject mine)\n");
+        File.AppendAllText(path1, "      (at waterobject pond)\n");
+        File.AppendAllText(path1, "      (at bucketobject town)\n");
+        File.AppendAllText(path1, "      (at swordobject town)\n");
+        File.AppendAllText(path1, "      (at pickaxeobject mine)\n");
         File.AppendAllText(path1, "      (at npc " + allLocations + ")\n");
 
         File.AppendAllText(path1, "   )\n");

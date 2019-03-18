@@ -1,36 +1,57 @@
-(define (problem mk4)
+(define (problem mk5)
    (:domain magic-world)
    (:objects
       npc - character
-      king blacksmith shopkeep miner lumberjack fisher - person
+      kingperson - king
+      blacksmithperson - blacksmith
+      shopkeepperson - shopkeep
+      minerperson - miner
+      lumberjackperson - lumberjack
+      fisherperson - fisher
       goblin - minor
       gobking - major
+      questobject - quest
+      swordobject - sword
+      woodobject - wood
+      waterobject - water
+      bucketobject - bucket
+      oreobject - ore
+      pickaxeobject - pickaxe
+      fishobject - fish
       town forest road city mine pond mountain tundra abandonedhouse  - location
-      quest sword magic enchantedsword wood water bucket ore pickaxe - object
    )
    (:init
-      (border abandonedhouse pond)
-      (border abandonedhouse city)
-      (border pond abandonedhouse)
-      (border forest town)
-      (border forest tundra)
-      (border town mountain)
-      (border town forest)
+      (border abandonedhouse road)
+      (border abandonedhouse mountain)
+      (border pond tundra)
+      (border forest road)
+      (border forest city)
+      (border town mine)
       (border road tundra)
-      (border mine mountain)
+      (border road abandonedhouse)
+      (border road forest)
       (border mine city)
-      (border tundra forest)
+      (border mine town)
+      (border tundra mountain)
+      (border tundra pond)
       (border tundra road)
-      (border mountain town)
-      (border mountain mine)
-      (border city abandonedhouse)
+      (border mountain abandonedhouse)
+      (border mountain tundra)
+      (border city forest)
       (border city mine)
-      (at king city)
-      (at blacksmith mine)
-      (at miner mine)
-      (at lumberjack town)
-      (at shopkeep town)
-      (at fisher pond)
+      (at kingperson city)
+      (at blacksmithperson mine)
+      (at minerperson mine)
+      (at lumberjackperson town)
+      (at shopkeepperson town)
+      (at fisherperson pond)
+      (at fishobject pond)
+      (at woodobject forest)
+      (at oreobject mine)
+      (at waterobject pond)
+      (at bucketobject town)
+      (at swordobject town)
+      (at pickaxeobject mine)
       (at npc abandonedhouse)
    )
   (:goal(and (at npc mine)))
