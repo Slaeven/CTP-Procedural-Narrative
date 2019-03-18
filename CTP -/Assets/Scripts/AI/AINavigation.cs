@@ -5,13 +5,11 @@ using UnityEngine.AI;
 
 public class AINavigation : MonoBehaviour
 {
-
     private NavMeshAgent npc;
     public Vector3 AILocToMove = new Vector3(0,0,0);
     public GameObject AInpc;
     public GameObject moveTo;
     public string[] lines;
-
 
     void Awake()
     {
@@ -23,6 +21,7 @@ public class AINavigation : MonoBehaviour
     {
         string path1 = Application.dataPath + "/output1.txt";
         lines = System.IO.File.ReadAllLines(path1); // Will include empty lines. Also when importing the txt remove the numbered lines
+
 	}
 
     public void MoveToLocation(Vector3 targetPoint)
