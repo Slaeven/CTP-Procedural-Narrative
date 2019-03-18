@@ -1,0 +1,11 @@
+move npc abandonedhouse road
+
+move npc road forest
+
+move npc forest city
+
+move npc city mine
+
+gather-ore npc mine oreobject
+
+give-ore npc minerperson mine
