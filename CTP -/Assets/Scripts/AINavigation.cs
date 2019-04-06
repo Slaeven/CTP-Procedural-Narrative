@@ -5,39 +5,21 @@ using UnityEngine.AI;
 
 public class AINavigation : MonoBehaviour
 {
-    private NavMeshAgent npc;
-    public Vector3 AILocToMove = new Vector3(0,0,0);
-    public GameObject AInpc;
-    public GameObject moveTo;
     public string[] lines;
-    public string[,] locs;
     public string[] words;
+    public string[,] acts;
 
-    void Awake()
-    {
-        npc = GetComponent<NavMeshAgent>();
-        moveTo = GameObject.FindGameObjectWithTag("GoTo");
-    }
-
-	void Start ()
+    void Start ()
     {
         string path1 = Application.dataPath + "/output1.txt";
         lines = System.IO.File.ReadAllLines(path1); // Will include empty lines. Also when importing the txt remove the numbered lines
         StartCoroutine("WaitForSpawn");
-        locs = new string[50, 50];
-        //words = new string[100];
-    }
-
-    public void MoveToLocation(Vector3 targetPoint)
-    {
-        npc.destination = targetPoint;
-        npc.isStopped = false;
+        acts = new string[50, 50];
     }
 
 	void Update ()
     {
 
-        MoveToLocation(moveTo.transform.position);
 	}
 
     void Decypher()
@@ -59,15 +41,15 @@ public class AINavigation : MonoBehaviour
             }
         }
        
-
     }
 
     void Storage(string action, string firstLoc, string secondLoc) // 2d array storing all movements
     {
         int i = 0;
 
-        locs[i, 0] = firstLoc;
-        locs[i, 1] = secondLoc;
+        acts[i, 0] = action;
+        acts[i, 1] = firstLoc;
+        acts[i, 2] = secondLoc;
 
         i++;
 

@@ -23,25 +23,11 @@ GameObject:
   - component: {fileID: 23288860636723652}
   - component: {fileID: 195951538461120278}
   - component: {fileID: 114845002074028370}
+  - component: {fileID: 114728868059327032}
   - component: {fileID: 136964204667114348}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1962937197327044
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4665574450590282}
-  m_Layer: 0
-  m_Name: GoTo
-  m_TagString: GoTo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,25 +38,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1228752839078012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9970107, y: 1.1, z: -9.925948}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.55, y: 1.1333332, z: -10.74}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
-  m_Children:
-  - {fileID: 4665574450590282}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4665574450590282
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1962937197327044}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4239525593244052}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23288860636723652
@@ -115,6 +87,41 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1228752839078012}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114728868059327032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228752839078012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d79e6af1dd4b4f4882c0962a0f4d6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - move npc abandonedhouse road
+  - 
+  - move npc road forest
+  - 
+  - move npc forest city
+  - 
+  - move npc city mine
+  - 
+  - gather-ore npc mine oreobject
+  - 
+  - give-ore npc minerperson mine
+  nextAction: 0
+  locationMoveToArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  CurrentGoTo: {x: 0, y: 0, z: 0}
 --- !u!114 &114845002074028370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,9 +133,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcde1543ce428e41a442f76e2fcb500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AILocToMove: {x: -11.296, y: 1.1, z: 3.092}
-  AInpc: {fileID: 1228752839078012}
-  moveTo: {fileID: 0}
+  lines:
+  - move npc abandonedhouse road
+  - 
+  - move npc road forest
+  - 
+  - move npc forest city
+  - 
+  - move npc city mine
+  - 
+  - gather-ore npc mine oreobject
+  - 
+  - give-ore npc minerperson mine
+  words:
+  - give-ore
+  - npc
+  - minerperson
+  - mine
 --- !u!136 &136964204667114348
 CapsuleCollider:
   m_ObjectHideFlags: 1
