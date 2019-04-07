@@ -5,16 +5,19 @@ using UnityEngine.AI;
 
 public class ActionsFulfillment : MonoBehaviour
 {
+    #region Variables
     public string[,] acts;
     public string[] lines;
 
     private NavMeshAgent npc;
-    public bool taskComplete;
+    public bool taskComplete = false;
     public bool waitComplete = false;
     public GameObject[] locationMoveToArray;
     public Vector3 CurrentGoTo;
     public int currentTaskNum = 0;
-
+    public List<string> items;
+    public bool doneOnce = false;
+    #endregion
 
     enum AllLocations
     {
@@ -28,7 +31,14 @@ public class ActionsFulfillment : MonoBehaviour
         abandonedhouse,
         mountain
     };
-
+    enum CurrentTask
+    {
+        Idle,
+        Moving,
+        Gathering,
+        Giving,
+        Fighting   
+    };
 
     private void Awake()
     {
@@ -44,120 +54,210 @@ public class ActionsFulfillment : MonoBehaviour
     {
         if (waitComplete)
         {
-            if (!taskComplete)
+            if (!taskComplete)  //if task is in progress wait till complete
             {
-                //nextAction = false;
-                //for (int i = 0; i < lines.Length; i++)
-                //{
-                //if (acts[i,0] == "move")
-                //{
-                //if(acts[i,2] == "town")
-                //{
-                MoveToLocation(locationMoveToArray[0].transform.position);
-                CurrentGoTo = locationMoveToArray[0].transform.position;
-                //}
-                //if (acts[i, 2] == "road")
-                //{
-                //    MoveToLocation(movePoints[1]);
-                //}
-                //if (acts[i, 2] == "forest")
-                //{
-                //    MoveToLocation(movePoints[2]);
-                //}
-                //if (acts[i, 2] == "city")
-                //{
-                //    MoveToLocation(movePoints[3]);
-                //}
-                //if (acts[i, 2] == "tundra")
-                //{
-                //    MoveToLocation(movePoints[4]);
-                //}
-                //if (acts[i, 2] == "mine")
-                //{
-                //    MoveToLocation(movePoints[5]);
-                //}
-                //if (acts[i, 2] == "pond")
-                //{
-                //    MoveToLocation(movePoints[6]);
-                //}
-                //if (acts[i, 2] == "abandonedhouse")
-                //{
-                //    MoveToLocation(movePoints[7]);
-                //}
-                //if (acts[i, 2] == "mountain")
-                //{
-                //    MoveToLocation(movePoints[8]);
-                //}
-
-                //}
-                //}
-
+                MaintainTask();
             }
-            else
+            else if (taskComplete) // If task is complete start the next on the list
             {
-                StartNextTask();
+                taskComplete = false;
+                currentTaskNum++;
             }
         }
-    
+        
+        
     }
 
     public void MoveToLocation(Vector3 targetPoint)
     {
         npc.destination = targetPoint;
+        CurrentGoTo = targetPoint;
         npc.isStopped = false;
-        if (this.gameObject.transform.position == CurrentGoTo)
+        if (Vector3.Distance(this.gameObject.transform.position, CurrentGoTo) <= 2)
         {
             taskComplete = true;
         }
     }
 
-    public int StartNextTask()
+    public void MaintainTask()
     {
-        if (acts[currentTaskNum, 0] == "move")
+        switch (acts[currentTaskNum, 0])
         {
-            
+            case "move":
+                {
+                    MoveTime();
+                    break;
+                }
+            case "gather-ore":
+                {
+                    GatherTime("ore");
+                    break;
+                }
+            case "gather-water":
+                {
+                    GatherTime("water");
+                    break;
+                }
+            case "gather-fish":
+                {
+                    GatherTime("fish");
+                    break;
+                }
+            case "gather-wood":
+                {
+                    GatherTime("wood");
+                    break;
+                }
+            case "give-ore":
+                {
+                    GiveTime("ore");
+                    break;
+                }
+            case "give-water":
+                {
+                    GiveTime("water");
+                    break;
+                }
+            case "give-fish":
+                {
+                    GiveTime("fish");
+                    break;
+                }
+            case "give-wood":
+                {
+                    GiveTime("wood");
+                    break;
+                }
+            case "":
+                {
+                    IdleTime();
+                    break;
+                }
         }
-        else if (acts[currentTaskNum, 0] == "gather-ore")
-        {
+    } // Checks task list and oes to appropriate function call
 
-        }
-        else if(acts[currentTaskNum, 0] == "gather-water")
+    public void MoveTime()
+    {
+        switch(acts[currentTaskNum,2])
         {
-
+            case "town":
+                {
+                    MoveToLocation(locationMoveToArray[0].transform.position);
+                    break;
+                }
+            case "road":
+                {
+                    MoveToLocation(locationMoveToArray[1].transform.position);
+                    break;
+                }
+            case "forest":
+                {
+                    MoveToLocation(locationMoveToArray[2].transform.position);
+                    break;
+                }
+            case "city":
+                {
+                    MoveToLocation(locationMoveToArray[3].transform.position);
+                    break;
+                }
+            case "tundra":
+                {
+                    MoveToLocation(locationMoveToArray[4].transform.position);
+                    break;
+                }
+            case "mine":
+                {
+                    MoveToLocation(locationMoveToArray[5].transform.position);
+                    break;
+                }
+            case "pond":
+                {
+                    MoveToLocation(locationMoveToArray[6].transform.position);
+                    break;
+                }
+            case "abandonedhouse":
+                {
+                    MoveToLocation(locationMoveToArray[7].transform.position);
+                    break;
+                }
+            case "mountain":
+                {
+                    MoveToLocation(locationMoveToArray[8].transform.position);
+                    break;
+                }
         }
-        else if(acts[currentTaskNum, 0] == "gather-fish")
+    }
+
+    public void GatherTime(string item) // adds item character is looking for to list and then finishes taskComplete
+    {
+        switch (item)
         {
-
+            case "ore":
+                {
+                    items.Add("ore");
+                    break;
+                }
+            case "wood":
+                {
+                    items.Add("wood");
+                    break;
+                }
+            case "fish":
+                {
+                    items.Add("fish");
+                    break;
+                }
+            case "water":
+                {
+                    items.Add("water");
+                    break;
+                }
         }
-        else if(acts[currentTaskNum, 0] == "gather-wood")
+        taskComplete = true;
+    }
+
+    public void GiveTime(string item)
+    {
+        switch(item)
         {
-
+            case "ore":
+                {
+                    items.Remove("ore");
+                    break;
+                }
+            case "wood":
+                {
+                    items.Remove("wood");
+                    break;
+                }
+            case "fish":
+                {
+                    items.Remove("fish");
+                    break;
+                }
+            case "water":
+                {
+                    items.Remove("water");
+                    break;
+                }
         }
-        else if(acts[currentTaskNum, 0] == "give-ore")
-        {
+        taskComplete = true;
+    }// removes item character is looking for to list and then finishes taskComplete
 
-        }
-        else if(acts[currentTaskNum, 0] == "give-water")
-        {
-
-        }
-        else if(acts[currentTaskNum, 0] == "give-fish")
-        {
-
-        }
-        else if(acts[currentTaskNum, 0] == "give-wood")
-        {
-
-        }
-        currentTaskNum ++;
-        return 
+    public void IdleTime() // Forces the character to stop moving and tell debug that it is idle
+    {
+        npc.isStopped = true;
+        Debug.Log("Idle Time");
     }
 
     IEnumerator WaitforConstruct()
     {
         yield return new WaitForSeconds(3.0f);
+        this.gameObject.transform.position = locationMoveToArray[0].transform.position;
+        taskComplete = true;
         waitComplete = true;
         acts = this.gameObject.GetComponent<AINavigation>().acts;
         lines = this.gameObject.GetComponent<AINavigation>().lines;
+
     }
 }

@@ -63,7 +63,7 @@ public class ProblemConstructor : MonoBehaviour
 
     private int curTextNum = 0;
 
-    private GameObject[] nodes; // nodes in the center of each tile
+    public GameObject[] nodes; // nodes in the center of each tile
     private GameObject[] investNodesArray; // current nodes being investigated for distance
     private GameObject currentCenter;
 
@@ -110,28 +110,24 @@ public class ProblemConstructor : MonoBehaviour
                 {
                     collectable = (CollectablesGatherer)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (has-" + collectable + " npc)))\n");
-                    Debug.Log(collectable);
                     break;
                 }
             case QuestType.Messenger:
                 {
                     postBox = (MessageBox)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (at npc " + postBox + ")))\n");
-                    Debug.Log(postBox);
                     break;
                 }
             case QuestType.Guard:
                 {
                     post = (GuardPost)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (at npc " + post + ")))\n");
-                    Debug.Log(post);
                     break;
                 }
             case QuestType.Hero:
                 {
                     heroDest = (HeroDestination)(Random.Range(0, 4));
                     File.AppendAllText(path1, "  (:goal(and (at npc " + heroDest + ")))\n");
-                    Debug.Log(heroDest);
                     break;
                 }
         }
