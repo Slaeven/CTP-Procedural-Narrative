@@ -23,7 +23,7 @@ public class AINavigation : MonoBehaviour
             string path1 = Application.dataPath + "/output1.txt";
             lines = System.IO.File.ReadAllLines(path1); // Will include empty lines. Also when importing the txt remove the numbered lines
             StartCoroutine(WaitForSpawn());
-            acts = new string[50, 3];
+            acts = new string[50, 4];
         }
 	}
 
@@ -33,22 +33,84 @@ public class AINavigation : MonoBehaviour
         {
             words = lines[i].Split(" "[0]); // Splits lines into words
 
-            if (words[0].Equals("move"))
+            switch (words[0])
             {
-                string firstLoc = words[0 + 2]; // Stores first move location
-                string secondLoc = words[0 + 3]; // Stores second move location
-                Storage("move", firstLoc, secondLoc,i);
-            }
+                case "move":
+                    {
+                        string firstLoc = words[0 + 2]; // Stores first move location
+                        string secondLoc = words[0 + 3]; // Stores second move location
+                        StorageMove("move", firstLoc, secondLoc, i);
+                        break;
+                    }
+                case "gather-ore":
+                    {
+                        string obj = words[3];
+                        StorageGather("gather-ore", obj, i);
+                        break;
+                    }
+                case "gather-water":
+                    {
+                        string obj = words[3];
+                        StorageGather("gather-water", obj, i);
+                        break;
+                    }
+                case "gather-fish":
+                    {
+                        string obj = words[3];
+                        StorageGather("gather-fish", obj, i);
+                        break;
+                    }
+                case "gather-wood":
+                    {
+                        string obj = words[3];
+                        StorageGather("gather-wood", obj, i);
+                        break;
+                    }
+                case "give-ore":
+                    {
+                        string obj = words[3];
+                        StorageGather("give-ore", obj, i);
+                        break;
+                    }
+                case "give-water":
+                    {
+                        string obj = words[3];
+                        StorageGather("give-water", obj, i);
+                        break;
+                    }
+                case "give-fish":
+                    {
+                        string obj = words[3];
+                        StorageGather("give-fish", obj, i);
 
+                        break;
+                    }
+                case "give-wood":
+                    {
+                        string obj = words[3];
+                        StorageGather("give-wood", obj, i);
+                        break;
+                    }
+            }
         }
        
     }
 
-    void  Storage(string action, string firstLoc, string secondLoc, int index) // 2d array storing all movements
+    void StorageMove(string action, string firstLoc, string secondLoc, int index) // 2d array storing all movements
     {
         acts[index, 0] = action;
         acts[index, 1] = firstLoc;
         acts[index, 2] = secondLoc;
+    }
+    void StorageGather(string action, string objtoadd, int index) // 2d array storing all movements
+    {
+        acts[index, 0] = action;
+        acts[index, 1] = objtoadd;
+    }
+    void StorageGive(string action, string objtoadd, int index) // 2d array storing all movements
+    {
+        acts[index, 0] = action;
+        acts[index, 1] = objtoadd;
     }
 
     IEnumerator WaitForSpawn()
