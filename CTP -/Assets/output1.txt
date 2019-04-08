@@ -4,3 +4,4 @@ move npc forest city
 move npc city mine
 gather-ore npc mine oreobject
 give-ore npc minerperson mine
+move npc mine town

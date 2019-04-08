@@ -9,9 +9,12 @@ public class ActionsFulfillment : MonoBehaviour
     public string[,] acts;
     public string[] lines;
 
+    private GameObject rotator;
+
     private NavMeshAgent npc;
     public bool taskComplete = false;
     public bool waitComplete = false;
+    public bool wait2 = false;
     public GameObject[] locationMoveToArray;
     public Vector3 CurrentGoTo;
     public int currentTaskNum = 0;
@@ -48,23 +51,26 @@ public class ActionsFulfillment : MonoBehaviour
     void Start ()
     {
         StartCoroutine(WaitforConstruct());
+        rotator = GameObject.FindGameObjectWithTag("rotator");
 	}
 	
 	void Update ()
     {
         if (waitComplete)
         {
-            if (!taskComplete)  //if task is in progress wait till complete
+            if (rotator.GetComponent<DayNightCycle>().GetDay() == true)
             {
-                MaintainTask();
-            }
-            else if (taskComplete) // If task is complete start the next on the list
-            {
-                taskComplete = false;
-                currentTaskNum++;
+                if (!taskComplete)  //if task is in progress wait till complete
+                {
+                    MaintainTask();
+                }
+                else if (taskComplete) // If task is complete start the next on the list
+                {
+                    taskComplete = false;
+                    currentTaskNum++;
+                }
             }
         }
-        
         
     }
 
@@ -190,64 +196,95 @@ public class ActionsFulfillment : MonoBehaviour
 
     public void GatherTime(string item) // adds item character is looking for to list and then finishes taskComplete
     {
-        switch (item)
+        if (wait2 == false)
         {
-            case "ore":
-                {
-                    items.Add("ore");
-                    break;
-                }
-            case "wood":
-                {
-                    items.Add("wood");
-                    break;
-                }
-            case "fish":
-                {
-                    items.Add("fish");
-                    break;
-                }
-            case "water":
-                {
-                    items.Add("water");
-                    break;
-                }
+            switch (item)
+            {
+                case "ore":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Add("ore");
+                        Debug.Log("Gathering");
+                        break;
+                    }
+                case "wood":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Add("wood");
+                        Debug.Log("Gathering");
+                        break;
+                    }
+                case "fish":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Add("fish");
+                        Debug.Log("Gathering");
+                        break;
+                    }
+                case "water":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Add("water");
+                        Debug.Log("Gathering");
+                        break;
+                    }
+            }
+            //taskComplete = true;
         }
-        taskComplete = true;
+
     }
 
     public void GiveTime(string item)
     {
-        switch(item)
+        if (wait2 == false)
         {
-            case "ore":
-                {
-                    items.Remove("ore");
-                    break;
-                }
-            case "wood":
-                {
-                    items.Remove("wood");
-                    break;
-                }
-            case "fish":
-                {
-                    items.Remove("fish");
-                    break;
-                }
-            case "water":
-                {
-                    items.Remove("water");
-                    break;
-                }
+            switch (item)
+            {
+                case "ore":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Remove("ore");
+                        Debug.Log("Giving");
+                        break;
+                    }
+                case "wood":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Remove("wood");
+                        Debug.Log("Giving");
+                        break;
+                    }
+                case "fish":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Remove("fish");
+                        Debug.Log("Giving");
+                        break;
+                    }
+                case "water":
+                    {
+                        StartCoroutine(Waiting(2.0f));
+                        items.Remove("water");
+                        Debug.Log("Giving");
+                        break;
+                    }
+            }
         }
-        taskComplete = true;
+        //taskComplete = true;
     }// removes item character is looking for to list and then finishes taskComplete
 
     public void IdleTime() // Forces the character to stop moving and tell debug that it is idle
     {
         npc.isStopped = true;
         Debug.Log("Idle Time");
+    }
+
+    IEnumerator Waiting(float waitTime)
+    {
+        wait2 = true;
+        yield return new WaitForSeconds(waitTime);
+        taskComplete = true;
+        wait2 = false;
     }
 
     IEnumerator WaitforConstruct()

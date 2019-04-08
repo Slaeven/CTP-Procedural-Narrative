@@ -18,6 +18,7 @@ TagManager:
   - mountain
   - GoTo
   - Link
+  - rotator
   layers:
   - Default
   - TransparentFX
