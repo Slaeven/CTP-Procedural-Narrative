@@ -9,8 +9,10 @@ public class DayNightCycle : MonoBehaviour
     public Quaternion rotationChecker;
     float xRotate;
     public float rotSpeed;
-    public float timer = 20; // 40 seconds full rotation
+    public float timer = 40; // 40 seconds full rotation
     public float daytimeTimer;
+    public bool dayTime = true;
+    public bool nightTime = false;
 
     private void Start()
     {
@@ -26,9 +28,18 @@ public class DayNightCycle : MonoBehaviour
 
 
         timer -= Time.deltaTime;
-        if(timer < 0)
+        if(timer < 0 && dayTime)
         {
-            
+            timer = 40;
+            dayTime = false;
+            nightTime = true;
+
+        }
+        if(timer < 0 && nightTime)
+        {
+            timer = 40;
+            dayTime = true;
+            nightTime = false;
         }
 
   
