@@ -50,7 +50,7 @@
       (at bucketobject town)
       (at swordobject town)
       (at pickaxeobject mine)
-      (at npc forest)
+      (at npc abandonedhouse)
    )
   (:goal(and (has-wood npc)))
 )

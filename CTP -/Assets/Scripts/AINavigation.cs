@@ -21,7 +21,7 @@ public class AINavigation : MonoBehaviour
         {
             doneOnce = true;
             string path1 = Application.dataPath + "/output1.txt";
-            lines = System.IO.File.ReadAllLines(path1); // Will include empty lines. Also when importing the txt remove the numbered lines
+            lines = System.IO.File.ReadAllLines(path1); // Will include empty lines. Also when importing the txt remove the numbered lines and gaps
             StartCoroutine(WaitForSpawn());
             acts = new string[50, 4];
         }
@@ -102,12 +102,12 @@ public class AINavigation : MonoBehaviour
         acts[index, 1] = firstLoc;
         acts[index, 2] = secondLoc;
     }
-    void StorageGather(string action, string objtoadd, int index) // 2d array storing all movements
+    void StorageGather(string action, string objtoadd, int index) // 2d array storing all gathering
     {
         acts[index, 0] = action;
         acts[index, 1] = objtoadd;
     }
-    void StorageGive(string action, string objtoadd, int index) // 2d array storing all movements
+    void StorageGive(string action, string objtoadd, int index) // 2d array storing all giving
     {
         acts[index, 0] = action;
         acts[index, 1] = objtoadd;

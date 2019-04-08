@@ -24,6 +24,7 @@ public class ActionsFulfillment : MonoBehaviour
     public List<string> items;
     public bool doneOnce = false;
     public bool doneOnce2 = false;
+    public bool doneOnce3 = false;
     private MeshRenderer rend;
     #endregion
 
@@ -64,34 +65,38 @@ public class ActionsFulfillment : MonoBehaviour
     {
         if (waitComplete)
         {
-            if (rotator.GetComponent<DayNightCycle>().GetDay() == true)
+            if (System.IO.File.Exists(Application.dataPath + "/output1.txt")/* && !doneOnce3*/)
             {
-                doneOnce2 = false;
-                rend.enabled = true;
-                if (!taskComplete)  //if task is in progress wait till complete
+                //doneOnce3 = true;
+                if (rotator.GetComponent<DayNightCycle>().GetDay() == true)
                 {
-                    MaintainTask();
+                    doneOnce2 = false;
+                    rend.enabled = true;
+                    if (!taskComplete)  //if task is in progress wait till complete
+                    {
+                        MaintainTask();
+                    }
+                    else if (taskComplete) // If task is complete start the next on the list
+                    {
+                        taskComplete = false;
+                        currentTaskNum++;
+                    }
                 }
-                else if (taskComplete) // If task is complete start the next on the list
+                else
                 {
-                    taskComplete = false;
-                    currentTaskNum++;
+                    if (doneOnce2)
+                    {
+                        doneOnce2 = true;
+                        choice = Random.Range(0, safeHouseArray.Length + 1);
+                    }
+                    npc.destination = safeHouseArray[choice].transform.position;
+                    npc.speed = 2.5f;
+                    if (Vector3.Distance(this.gameObject.transform.position, safeHouseArray[choice].transform.position) <= 1)
+                    {
+                        rend.enabled = false;
+                    }
+                    //npc.isStopped = true;
                 }
-            }
-            else
-            {
-                if (doneOnce2)
-                {
-                    doneOnce2 = true;
-                    choice = Random.Range(0, safeHouseArray.Length+1);
-                }
-                npc.destination = safeHouseArray[choice].transform.position;
-                npc.speed = 2.5f;
-                if(Vector3.Distance(this.gameObject.transform.position, safeHouseArray[choice].transform.position) <= 1)
-                {
-                    rend.enabled = false;
-                }
-                //npc.isStopped = true;
             }
         }
         
@@ -166,6 +171,7 @@ public class ActionsFulfillment : MonoBehaviour
         }
     } // Checks task list and oes to appropriate function call
 
+    #region Tasks
     public void MoveTime()
     {
         switch(acts[currentTaskNum,2])
@@ -302,6 +308,7 @@ public class ActionsFulfillment : MonoBehaviour
         npc.isStopped = true;
         Debug.Log("Idle Time");
     }
+    #endregion
 
     IEnumerator Waiting(float waitTime)
     {
@@ -320,6 +327,7 @@ public class ActionsFulfillment : MonoBehaviour
         acts = this.gameObject.GetComponent<AINavigation>().acts;
         lines = this.gameObject.GetComponent<AINavigation>().lines;
         safeHouseArray = GameObject.FindGameObjectsWithTag("SafeHouse");
+        string path1 = Application.dataPath + "/output1.txt";
 
     }
 }
