@@ -1,0 +1,3 @@
+move npc pond tundra
+move npc tundra mine
+gather-ore npc mine oreobject

@@ -74,7 +74,7 @@ public class ProblemConstructor4 : MonoBehaviour
 
     void Start()
     {
-        string path1 = Application.dataPath + "/quest5.pddl";
+        string path1 = Application.dataPath + "/quest4.pddl";
         nodes = GameObject.FindGameObjectsWithTag("Node");
         GenerateProblem();
         File.WriteAllText(path1, "");
@@ -101,7 +101,7 @@ public class ProblemConstructor4 : MonoBehaviour
 
     void GenerateProblem()
     {
-        string path1 = Application.dataPath + "/quest5.pddl";
+        string path1 = Application.dataPath + "/quest4.pddl";
         questType = (QuestType)(Random.Range(0, 4));
         allLocations = (AllLocations)(Random.Range(0, 8));
 
@@ -154,14 +154,14 @@ public class ProblemConstructor4 : MonoBehaviour
 
     void AddBorder(string currentNodeName, string neighbourParentName)
     {
-        string path1 = Application.dataPath + "/quest5.pddl";
+        string path1 = Application.dataPath + "/quest4.pddl";
 
         File.AppendAllText(path1, "      (border " + currentNodeName + " " + neighbourParentName + ")\n");
     }
 
     void CreateMainText()
     {
-        string path1 = Application.dataPath + "/quest5.pddl";
+        string path1 = Application.dataPath + "/quest4.pddl";
 
         File.WriteAllText(path1, "(define (problem mk5)\n");
         File.AppendAllText(path1, "   (:domain magic-world)\n");
@@ -190,7 +190,7 @@ public class ProblemConstructor4 : MonoBehaviour
 
     void FinishText()
     {
-        string path1 = Application.dataPath + "/quest5.pddl";
+        string path1 = Application.dataPath + "/quest4.pddl";
 
         File.AppendAllText(path1, "      (at kingperson city)\n");
         File.AppendAllText(path1, "      (at blacksmithperson mine)\n");

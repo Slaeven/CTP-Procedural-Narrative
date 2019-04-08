@@ -1,0 +1,5 @@
+move npc pond mountain
+move npc mountain forest
+move npc forest abandonedhouse
+move npc abandonedhouse road
+move npc road city

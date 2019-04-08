@@ -1,0 +1,2 @@
+move npc tundra pond
+gather-water npc pond waterobject

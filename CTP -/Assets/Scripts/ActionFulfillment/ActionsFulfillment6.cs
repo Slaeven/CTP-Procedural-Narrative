@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ActionsFulfillment : MonoBehaviour
+public class ActionsFulfillment6 : MonoBehaviour
 {
     #region Variables
     public string[,] acts;
@@ -65,7 +65,7 @@ public class ActionsFulfillment : MonoBehaviour
     {
         if (waitComplete)
         {
-            if (System.IO.File.Exists(Application.dataPath + "/output1.txt")/* && !doneOnce3*/)
+            if (System.IO.File.Exists(Application.dataPath + "/output7.txt")/* && !doneOnce3*/)
             {
                 //doneOnce3 = true;
                 if (rotator.GetComponent<DayNightCycle>().GetDay() == true)
@@ -84,14 +84,14 @@ public class ActionsFulfillment : MonoBehaviour
                 }
                 else
                 {
-                    if (doneOnce2)
+                    if (!doneOnce2)
                     {
                         doneOnce2 = true;
                         choice = Random.Range(0, safeHouseArray.Length + 1);
                     }
                     npc.destination = safeHouseArray[choice].transform.position;
                     npc.speed = 2.5f;
-                    if (Vector3.Distance(this.gameObject.transform.position, safeHouseArray[choice].transform.position) <= 1)
+                    if (Vector3.Distance(this.gameObject.transform.position, safeHouseArray[choice].transform.position) <= 2)
                     {
                         rend.enabled = false;
                     }
@@ -324,10 +324,10 @@ public class ActionsFulfillment : MonoBehaviour
         this.gameObject.transform.position = locationMoveToArray[0].transform.position;
         taskComplete = true;
         waitComplete = true;
-        acts = this.gameObject.GetComponent<AINavigation>().acts;
-        lines = this.gameObject.GetComponent<AINavigation>().lines;
+        acts = this.gameObject.GetComponent<AINavigation6>().acts;
+        lines = this.gameObject.GetComponent<AINavigation6>().lines;
         safeHouseArray = GameObject.FindGameObjectsWithTag("SafeHouse");
-        string path1 = Application.dataPath + "/output1.txt";
+        string path1 = Application.dataPath + "/output7.txt";
 
     }
 }
