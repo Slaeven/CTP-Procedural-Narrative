@@ -10,16 +10,21 @@ public class ActionsFulfillment : MonoBehaviour
     public string[] lines;
 
     private GameObject rotator;
+    private Vector3 prevDist;
+    private int choice;
 
     private NavMeshAgent npc;
     public bool taskComplete = false;
     public bool waitComplete = false;
     public bool wait2 = false;
     public GameObject[] locationMoveToArray;
+    private GameObject[] safeHouseArray;
     public Vector3 CurrentGoTo;
     public int currentTaskNum = 0;
     public List<string> items;
     public bool doneOnce = false;
+    public bool doneOnce2 = false;
+    private MeshRenderer rend;
     #endregion
 
     enum AllLocations
@@ -52,6 +57,7 @@ public class ActionsFulfillment : MonoBehaviour
     {
         StartCoroutine(WaitforConstruct());
         rotator = GameObject.FindGameObjectWithTag("rotator");
+        rend = GetComponent<MeshRenderer>();
 	}
 	
 	void Update ()
@@ -60,6 +66,8 @@ public class ActionsFulfillment : MonoBehaviour
         {
             if (rotator.GetComponent<DayNightCycle>().GetDay() == true)
             {
+                doneOnce2 = false;
+                rend.enabled = true;
                 if (!taskComplete)  //if task is in progress wait till complete
                 {
                     MaintainTask();
@@ -70,6 +78,21 @@ public class ActionsFulfillment : MonoBehaviour
                     currentTaskNum++;
                 }
             }
+            else
+            {
+                if (doneOnce2)
+                {
+                    doneOnce2 = true;
+                    choice = Random.Range(0, safeHouseArray.Length+1);
+                }
+                npc.destination = safeHouseArray[choice].transform.position;
+                npc.speed = 2.5f;
+                if(Vector3.Distance(this.gameObject.transform.position, safeHouseArray[choice].transform.position) <= 1)
+                {
+                    rend.enabled = false;
+                }
+                //npc.isStopped = true;
+            }
         }
         
     }
@@ -78,6 +101,7 @@ public class ActionsFulfillment : MonoBehaviour
     {
         npc.destination = targetPoint;
         CurrentGoTo = targetPoint;
+        npc.speed = 1.5f;
         npc.isStopped = false;
         if (Vector3.Distance(this.gameObject.transform.position, CurrentGoTo) <= 2)
         {
@@ -295,6 +319,7 @@ public class ActionsFulfillment : MonoBehaviour
         waitComplete = true;
         acts = this.gameObject.GetComponent<AINavigation>().acts;
         lines = this.gameObject.GetComponent<AINavigation>().lines;
+        safeHouseArray = GameObject.FindGameObjectsWithTag("SafeHouse");
 
     }
 }

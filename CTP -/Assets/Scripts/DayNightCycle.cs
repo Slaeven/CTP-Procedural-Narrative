@@ -48,10 +48,6 @@ public class DayNightCycle : MonoBehaviour
     }
     public bool GetDay()
     {
-        //if(rotationChecker.x >  && rotationChecker.x > 0.7)
-        //{
-        //    return true;
-       // }
-        return false;
+        return dayTime;       
     }
 }

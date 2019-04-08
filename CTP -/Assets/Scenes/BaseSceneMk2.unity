@@ -2217,6 +2217,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74566961d61e9ae40b81f10e1cc89cc8, type: 3}
   m_IsPrefabAsset: 0
+--- !u!1 &237920937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237920938}
+  m_Layer: 0
+  m_Name: CityHouse2
+  m_TagString: SafeHouse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &237920938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 237920937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.18, y: 1.032, z: 7.895}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &243583479
 Prefab:
   m_ObjectHideFlags: 0
@@ -4679,6 +4707,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4958663564443840, guid: 24c610e6e4b1dbf4ab23ddd533be3e8b,
     type: 2}
   m_PrefabInternal: {fileID: 1529521275}
+--- !u!1 &428942009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428942010}
+  m_Layer: 0
+  m_Name: TownInn
+  m_TagString: SafeHouse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428942010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 428942009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.366, y: 0.771, z: 11.553}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &430035266
 Prefab:
   m_ObjectHideFlags: 0
@@ -9151,6 +9207,8 @@ MonoBehaviour:
   rotSpeed: 500
   timer: 40
   daytimeTimer: 0
+  dayTime: 1
+  nightTime: 0
 --- !u!4 &820808677
 Transform:
   m_ObjectHideFlags: 0
@@ -10230,6 +10288,15 @@ Prefab:
       propertyPath: locationMoveToArray.Array.data[8]
       value: 
       objectReference: {fileID: 1533671858}
+    - target: {fileID: 195951538461120278, guid: 506288564a80f0d4784716cfaa55719a,
+        type: 2}
+      propertyPath: m_Speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228752839078012, guid: 506288564a80f0d4784716cfaa55719a, type: 2}
+      propertyPath: m_Name
+      value: Character
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 506288564a80f0d4784716cfaa55719a, type: 2}
   m_IsPrefabAsset: 0
@@ -10703,6 +10770,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 8893789b8e42933408ebbb18a4c81c8a,
     type: 3}
   m_PrefabInternal: {fileID: 1280744612}
+--- !u!1 &981323706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981323707}
+  m_Layer: 0
+  m_Name: CityHouse3
+  m_TagString: SafeHouse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981323707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 981323706}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.18, y: 1.032, z: 11.365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &981883313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4958663564443840, guid: 24c610e6e4b1dbf4ab23ddd533be3e8b,
@@ -12998,6 +13093,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: c9a85f9afd9eddf4e8e1ccd78ad7e40f,
     type: 3}
   m_PrefabInternal: {fileID: 1522265089}
+--- !u!1 &1236438232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236438233}
+  m_Layer: 0
+  m_Name: TownHouse
+  m_TagString: SafeHouse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1236438233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236438232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.47, y: 1.112, z: 7.347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1238119498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4958663564443840, guid: 24c610e6e4b1dbf4ab23ddd533be3e8b,
@@ -14888,6 +15011,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4035158495216074, guid: 00020124f820e9c49967a11170956dc1,
     type: 2}
   m_PrefabInternal: {fileID: 919587561}
+--- !u!1 &1403517944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403517945}
+  m_Layer: 0
+  m_Name: CityHouse1
+  m_TagString: SafeHouse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403517945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403517944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.396, y: 1.032, z: 8.965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1404808157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4958663564443840, guid: 24c610e6e4b1dbf4ab23ddd533be3e8b,

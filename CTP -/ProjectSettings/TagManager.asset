@@ -19,6 +19,7 @@ TagManager:
   - GoTo
   - Link
   - rotator
+  - SafeHouse
   layers:
   - Default
   - TransparentFX
