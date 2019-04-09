@@ -80,6 +80,7 @@ public class WorldConstructor : MonoBehaviour
     {
         if (dayNight.GetComponent<DayNightCycle>().GetDay() == true)
         {
+            doneOnce2 = false;
             foreach (GameObject part in particles)
             {
                 part.GetComponent<ParticleSystem>().Stop();
