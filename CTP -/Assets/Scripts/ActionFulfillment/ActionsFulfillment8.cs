@@ -97,6 +97,10 @@ public class ActionsFulfillment8 : MonoBehaviour
                     }
                     //npc.isStopped = true;
                 }
+                if (currentTaskNum > lines.Length)
+                {
+                    currentTaskNum = 0;
+                }
             }
         }
         

@@ -10,9 +10,16 @@ public class WorldConstructor : MonoBehaviour
     private Vector3 spawnLocation = new Vector3(0, 0, 0);
     public int previousMove = 0;
     public int choice = 0;
+    private int centerCount = 0;
+    private GameObject dayNight;
+    private bool doneOnce = false;
+    private bool doneOnce2 = false;
+    private GameObject[] particles;
 
 	void Start ()
     {
+        dayNight = GameObject.FindGameObjectWithTag("rotator");
+        particles = GameObject.FindGameObjectsWithTag("Particle");
         locations = GameObject.FindGameObjectsWithTag("Location"); // Randomises and adds to an array
 
         for (int positionOfArray = 0; positionOfArray < locations.Length; positionOfArray++)
@@ -57,10 +64,39 @@ public class WorldConstructor : MonoBehaviour
                         break;
                     }
             }
-            
+            if (centerCount == 4 && !doneOnce)
+            {
+                doneOnce = true;
+                dayNight.transform.position = spawnLocation;
+            }
+
+            centerCount++;
             location.transform.position = spawnLocation;
         }
 
 	}
+
+    private void Update()
+    {
+        if (dayNight.GetComponent<DayNightCycle>().GetDay() == true)
+        {
+            foreach (GameObject part in particles)
+            {
+                part.GetComponent<ParticleSystem>().Stop();
+            }           
+        }
+        else if(dayNight.GetComponent<DayNightCycle>().GetDay() == false)
+        {
+            if (!doneOnce2)
+            {
+                doneOnce2 = true;
+                foreach (GameObject part in particles)
+                {
+                    part.GetComponent<ParticleSystem>().Play();
+                }
+            }
+        }
+
+    }
 
 }
