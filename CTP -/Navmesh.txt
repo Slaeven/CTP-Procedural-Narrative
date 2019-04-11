@@ -1,8 +1,0 @@
-Can have areas guarded by enemies, which heros can only
-go through. But once a hero beats the enemy the civilians
-can go through them.
-
-Also to Bake them on run time, create a NavMeshSurface
-component that is linked to the desired object and then
-when it needs to be baked you call - 
-"Object".BuildNavMesh();

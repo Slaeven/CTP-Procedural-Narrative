@@ -1,1 +1,0 @@
-Locations : town, road, forest, city, tundra, blacksmithy, pond, abandonedhouse, mountain
